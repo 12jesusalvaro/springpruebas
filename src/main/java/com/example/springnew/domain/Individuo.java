@@ -2,6 +2,9 @@
 package com.example.springnew.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+
 import java.io.Serializable;
 import lombok.Data;
 
@@ -14,10 +17,21 @@ public class Individuo implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+    
+    @NotEmpty
     private String nombre;
-    private String apellido;    
+    
+    @NotEmpty
+    private String apellido;
+    
+    @NotEmpty
     private String telefono;
+    
+    @NotEmpty
+    @Email
     private String correo;
+    
+    @NotEmpty
     private String edad;
 }

@@ -1,0 +1,45 @@
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Editar individuo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <header th:replace="plantilla/plantilla :: encabezado"/>
+        
+        <h1>Datos del nuevo individuo</h1>
+        <a th:href="@{/}">Retroceder</a>
+        </br>
+        <form th:action="@{/salvar}" method="post" th:object="${individuo}">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            </br>
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errores="*{nombre}">Error en el nombre</span>
+            </br>
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" th:field="*{apellido}"/>
+            <span th:if="${#fields.hasErrors('apellido')}" th:errores="*{apellido}">Error en el apellido</span>
+            </br>
+            <label for="edad">Edad</label>
+            <input type="number" name="edad" th:field="*{edad}"/>
+            <span th:if="${#fields.hasErrors('edad')}" th:errores="*{edad}">Error en el edad</span>
+            </br>
+            <label for="correo">Correo</label>
+            <input type="email" name="correo" th:field="*{correo}"/>
+            <span th:if="${#fields.hasErrors('correo')}" th:errores="*{correo}">Error en el correo</span>
+            </br>
+            <label for="telefono">Telefono</label>
+            <input type="tel" name="telefono" th:field="*{telefono}"/>
+            <span th:if="${#fields.hasErrors('telefono')}" th:errores="*{telefono}">Error en el telefono</span>
+            </br>
+            <input type="submit" name="salvar" value="Salvar"/>
+        </form>
+        
+        </br>
+        <footer th:replace="plantilla/plantilla :: piepagina"></footer>
+    </body>
+</html>

@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div> <h1>Inicio</h1></div>
+        <header th:replace="plantilla/plantilla :: encabezado"/>
+        <a th:href="@{/anexar}">Alta individuo</a>
+        <br/>        
         <br/>
         
         <div th:if="${individuos != null and !individuos.empty}">
@@ -16,20 +18,26 @@
                     <th>Apellido</th>
                     <th>Edad</th>
                     <th>Correo</th>
-                    <th>Telefono</th>
+                    <th>Telefono</th>                    
+                    <th>Editar</th>
+                    <th>Borrar</th>
+
                 </tr>
                 <tr th:each="individuo : ${individuos}">
                     <td th:text="${individuo.nombre}">Muestra nombre</td>
                     <td th:text="${individuo.apellido}">Muestra apellido</td>
                     <td th:text="${individuo.edad}">Muestra edad</td>
                     <td th:text="${individuo.correo}">Muestra correo</td>
-                    <td th:text="${individuo.telefono}">Muestra telefono</td>
+                    <td th:text="${individuo.telefono}">Muestra telefono</td>                    
+                    <td> <a th:href="@{/cambiar/} + ${individuo.id}" th:text="Cambiar"/></td>
+                    <td> <a th:href="@{/borrar(id=${individuo.id})}" th:text="Borrar"/></td>
                 </tr>
             </table>
         </div>
         <div th:if="${individuos == null or individuos.empty}">
             La lista esta vacia
         </div>
-        
+        </br>
+        <footer th:replace="plantilla/plantilla :: piepagina"></footer>
     </body>
 </html>
